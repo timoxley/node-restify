@@ -73,6 +73,15 @@ test('create json client', function (t) {
   t.end();
 });
 
+test('GET path with spaces', function (t) {
+  client.get('/json/mcavage yeah', function (err, req, res, obj) {
+    t.ifError(err);
+    t.ok(req);
+    t.ok(res);
+    t.equivalent(obj, {hello: 'mcavage yeah'});
+    t.end();
+  });
+});
 
 test('GET json', function (t) {
   client.get('/json/mcavage', function (err, req, res, obj) {
